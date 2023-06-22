@@ -52,8 +52,34 @@ app.get("/locations/:id", async (req, res) => {
 });
 
 // update a location
+app.put("/locations/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { address_1, rating, seller_name, seller_email, photo } = req.body;
+    const location = await pool.query(
+      "UPDATE locations SET (address_1, rating, seller_name, seller_email, photo) = ($1, $2, $3, $4, $5) WHERE loc_id = $6",
+      [address_1, rating, seller_name, seller_email, photo, id]
+    );
+    res.json(location);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 // delete a location
+
+app.delete("/locations/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await pool.query(
+      "DELETE FROM locations WHERE loc_id = $1",
+      [id]
+    );
+    res.json(response);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server has started on port ${port}`);
