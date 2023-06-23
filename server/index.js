@@ -67,7 +67,6 @@ app.put("/locations/:id", async (req, res) => {
 });
 
 // delete a location
-
 app.delete("/locations/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -81,6 +80,7 @@ app.delete("/locations/:id", async (req, res) => {
   }
 });
 
+// set up listener
 app.listen(port, () => {
   console.log(`Server has started on port ${port}`);
 });
