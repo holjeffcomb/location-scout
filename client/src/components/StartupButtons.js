@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const StartupButtons = ({ getListings, clearListings, getOneListing }) => {
-  const [id, setId] = useState("");
+  const [id, setId] = useState("10");
 
   return (
     <div className="bg-slate-600">
