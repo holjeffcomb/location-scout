@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const StartupButtons = ({ getListings, clearListings, getOneListing }) => {
+const Controller = ({ props }) => {
+  const { getListings, getOneListing, clearListings } = props;
   const [id, setId] = useState("10");
 
   return (
@@ -44,4 +45,4 @@ const StartupButtons = ({ getListings, clearListings, getOneListing }) => {
   );
 };
 
-export default StartupButtons;
+export default Controller;
