@@ -9,7 +9,7 @@ const Main = () => {
     <Routes>
       {/* The Switch decides which component to show based on the current URL.*/}
       <Route exact path="/" element={<Home />}></Route>
-      <Route path="/listing" element={<ListingSummary />}></Route>
+      <Route path="/listing/:id" element={<ListingSummary />}></Route>
     </Routes>
   );
 };

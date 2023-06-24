@@ -46,7 +46,7 @@ const ListingsList = ({ listings }) => {
                     scope="row"
                     className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
-                    <a href={`/locations/${loc_id}`}>{loc_id}</a>
+                    <a href={`/listing/${loc_id}`}>{loc_id}</a>
                   </th>
                   <td className="px-6 py-4">{address_1}</td>
                   <td className="px-6 py-4">{rating}</td>
