@@ -6,7 +6,7 @@ const Controller = ({ props }) => {
 
   return (
     <div className="bg-slate-600">
-      <div className="m-6 m-8 mx-auto max-w-md rounded-md bg-slate-400 p-2 text-center">
+      <div className="m-8 mx-auto max-w-md rounded-md bg-slate-400 p-2 text-center">
         <div className="mx-auto grid max-w-sm grid-cols-1 gap-4 rounded-md bg-slate-400 p-2 text-slate-800">
           <button className="rounded-md bg-slate-200 py-2 hover:bg-slate-100">
             Create New Listing
