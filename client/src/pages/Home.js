@@ -34,6 +34,7 @@ const Home = () => {
       console.error(error.message);
     }
   };
+
   return (
     <>
       <Controller props={{ getListings, clearListings, getOneListing }} />
@@ -43,7 +44,7 @@ const Home = () => {
         ""
       )}
       {isLoading ? (
-        <p>... loading ...</p>
+        <p className="text-center text-xl text-gray-400">Loading ...</p>
       ) : (
         <ListingsList listings={listings} />
       )}
