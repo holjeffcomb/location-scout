@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "flowbite-react";
+import { Table, Rating } from "flowbite-react";
 
 const ListingsList = ({ listings }) => {
   const [listingsExist, setListingsExist] = useState(false);
@@ -13,6 +13,18 @@ const ListingsList = ({ listings }) => {
   useEffect(() => {
     checkSize();
   });
+
+  const ratingToArray = (rating) => {
+    let arr = [];
+    for (let i = 0; i < 5; i++) {
+      if (rating > i) {
+        arr.push(true);
+      } else {
+        arr.push(false);
+      }
+    }
+    return arr;
+  };
 
   return (
     <>
@@ -40,14 +52,25 @@ const ListingsList = ({ listings }) => {
                   } = listing;
                   return (
                     <Table.Row
-                      className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                      className="border-gray-600 bg-gray-400 text-zinc-800 dark:border-gray-700 dark:bg-gray-800 dark:text-zinc-200"
                       key={loc_id}
                     >
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         <a href={`/listing/${loc_id}`}>{loc_id}</a>
                       </Table.Cell>
                       <Table.Cell>{address_1}</Table.Cell>
-                      <Table.Cell>{rating}</Table.Cell>
+                      <Table.Cell>
+                        <Rating>
+                          {ratingToArray(rating).map((cell, index) => {
+                            const key = index;
+                            if (cell) {
+                              return <Rating.Star filled={true} key={key} />;
+                            } else {
+                              return <Rating.Star filled={false} key={key} />;
+                            }
+                          })}
+                        </Rating>
+                      </Table.Cell>
                       <Table.Cell>{seller_name}</Table.Cell>
                       <Table.Cell>{seller_email}</Table.Cell>
                       <Table.Cell className="max-w-0">

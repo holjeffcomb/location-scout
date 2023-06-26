@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Controller from "../components/Controller";
 import ListingsList from "../components/ListingsList";
+import { Spinner } from "flowbite-react";
 
 const Home = () => {
   const [listings, setListings] = useState([]);
@@ -51,7 +52,9 @@ const Home = () => {
         ""
       )}
       {isLoading ? (
-        <p className="text-center text-xl text-gray-400">Loading ...</p>
+        <div className="text-center">
+          <Spinner className="h-24 w-24 text-center" />
+        </div>
       ) : (
         <ListingsList listings={listings} />
       )}

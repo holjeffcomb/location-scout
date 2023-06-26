@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Button } from "flowbite-react";
 
 const ListingSummary = () => {
   const routeParams = useParams();
@@ -32,7 +33,10 @@ const ListingSummary = () => {
   return (
     <>
       <div className="m-20 mx-auto grid max-w-lg bg-slate-400 text-zinc-600">
-        <Link to="/">Back</Link>
+        <Link to="/">
+          <Button>Back</Button>
+        </Link>
+
         <div className="text-xl font-extrabold">{listing.loc_id}</div>
         <div className="font-bold">{listing.address_1}</div>
         <div>{rating.current}</div>
