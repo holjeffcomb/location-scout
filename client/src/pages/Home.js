@@ -37,7 +37,14 @@ const Home = () => {
 
   return (
     <>
-      <Controller props={{ getListings, clearListings, getOneListing }} />
+      <Controller
+        props={{
+          getListings,
+          clearListings,
+          getOneListing,
+          listingSize: listings.length,
+        }}
+      />
       {errorMsg ? (
         <h2 className="text-center text-xl text-red-500">Error: {errorMsg}</h2>
       ) : (

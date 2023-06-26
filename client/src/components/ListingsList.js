@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Table } from "flowbite-react";
 
 const ListingsList = ({ listings }) => {
   const [listingsExist, setListingsExist] = useState(false);
@@ -16,32 +17,18 @@ const ListingsList = ({ listings }) => {
   return (
     <>
       {listingsExist ? (
-        <div className="m-10">
+        <div className="mx-48 min-w-0">
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-              <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th scope="col" className="px-6 py-3">
-                    ID
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    ADDRESS
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    RATING
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    SELLER
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    SELLER EMAIL
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    PHOTO
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+            <Table hoverable>
+              <Table.Head>
+                <Table.HeadCell>ID</Table.HeadCell>
+                <Table.HeadCell>ADDRESS</Table.HeadCell>
+                <Table.HeadCell>RATING</Table.HeadCell>
+                <Table.HeadCell>SELLER</Table.HeadCell>
+                <Table.HeadCell>SELLER EMAIL</Table.HeadCell>
+                <Table.HeadCell>PHOTO</Table.HeadCell>
+              </Table.Head>
+              <Table.Body className="divide-y">
                 {listings.map((listing) => {
                   const {
                     loc_id,
@@ -52,28 +39,25 @@ const ListingsList = ({ listings }) => {
                     photo,
                   } = listing;
                   return (
-                    <tr
+                    <Table.Row
+                      className="bg-white dark:border-gray-700 dark:bg-gray-800"
                       key={loc_id}
-                      className="border-b bg-white dark:border-gray-700 dark:bg-gray-900"
                     >
-                      <th
-                        scope="row"
-                        className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
-                      >
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         <a href={`/listing/${loc_id}`}>{loc_id}</a>
-                      </th>
-                      <td className="px-6 py-4">{address_1}</td>
-                      <td className="px-6 py-4">{rating}</td>
-                      <td className="px-6 py-4">{seller_name}</td>
-                      <td className="px-6 py-4">{seller_email}</td>
-                      <td className="max-w-0 px-6 py-4">
+                      </Table.Cell>
+                      <Table.Cell>{address_1}</Table.Cell>
+                      <Table.Cell>{rating}</Table.Cell>
+                      <Table.Cell>{seller_name}</Table.Cell>
+                      <Table.Cell>{seller_email}</Table.Cell>
+                      <Table.Cell className="max-w-0">
                         <img src={photo} alt={loc_id} />
-                      </td>
-                    </tr>
+                      </Table.Cell>
+                    </Table.Row>
                   );
                 })}
-              </tbody>
-            </table>
+              </Table.Body>
+            </Table>
           </div>
         </div>
       ) : (

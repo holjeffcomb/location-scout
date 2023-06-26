@@ -1,10 +1,14 @@
 import React from "react";
 import Main from "./components/Main";
+import { DarkThemeToggle, Flowbite } from "flowbite-react";
 
 function App() {
   return (
     <>
-      <Main />
+      <Flowbite>
+        <DarkThemeToggle />
+        <Main />
+      </Flowbite>
     </>
   );
 }
