@@ -4,15 +4,20 @@ import ListingsList from "../components/ListingsList";
 
 const Home = () => {
   const [listings, setListings] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getListings = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch("http://localhost:5000/locations");
       const jsonData = await response.json();
-
       setListings(jsonData);
     } catch (error) {
+      setErrorMsg(error.message);
       console.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -32,7 +37,16 @@ const Home = () => {
   return (
     <>
       <Controller props={{ getListings, clearListings, getOneListing }} />
-      <ListingsList listings={listings} />
+      {errorMsg ? (
+        <h2 className="text-center text-xl text-red-500">Error: {errorMsg}</h2>
+      ) : (
+        ""
+      )}
+      {isLoading ? (
+        <p>... loading ...</p>
+      ) : (
+        <ListingsList listings={listings} />
+      )}
     </>
   );
 };
